@@ -14,5 +14,16 @@ export default EStyleSheet.create({
     lineHeight: 24,
     fontSize: 16,
     color: "#000000"
+  },
+  body: {
+    fontFamily: "Source Sans, sans-serif",
+    lineHeight: 24,
+    fontSize: 16,
+    color: "#000000"
+  },
+  root: {
+    alignItems: 'center',
+    padding: 25,
+    margin: 15,
   }
 });

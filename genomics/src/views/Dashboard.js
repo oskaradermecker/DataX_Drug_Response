@@ -14,29 +14,33 @@ const styles = ({
     color: "#000000"
   },
   root: {
+    backgroundColor: '#FEF9FE',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 35,
-  }
+  },
 });
 
 class Dashboard extends React.Component {
   render() {
     return (
       <div style={ styles.root }>
-        <Logo />
+        <Logo
+          logoSize={ 300 }
+        />
         <h1>About this App:</h1>
         <p>• This service is intended to serve as an educational tool to predict drug response for cancer treatments from patient mutation data.</p>
-        <p>• Always consult a licensed physician before making decisions and use results with discretion.</p>
+        <p>• Always consult a licensed physician before making decisions and use results from this project with discretion.</p>
         <LabelButton
           text="Test"
           buttonStyle={{ backgroundColor: "#568BFF" }}
           linksTo="/login"
           icon={Healing}
             />
+        <p style={ { textAlign: 'center' } }> or </p>
         <LabelButton
           text="History"
-          buttonStyle={{ backgroundColor: "#B877E9" }}
+          buttonStyle={ { backgroundColor: "#B877E9" } }
           linksTo="/login"
           icon={Web}
             />
@@ -45,28 +49,14 @@ class Dashboard extends React.Component {
   }
 }
 
+//util func for reading in Icons from .svg files
 function buttonIcon(props) {
   const path = '../images/svg/' + props.iconName + '.svg'
   return (
-    <SvgIcon {...props}>
+    <SvgIcon { ...props }>
       <path d={ path } />
     </SvgIcon>
   );
 }
-
-// const StyledButton = withStyles({
-//   root: {
-//     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-//     borderRadius: 3,
-//     border: 0,
-//     color: 'white',
-//     height: 48,
-//     padding: '0 30px',
-//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-//   },
-//   label: {
-//     textTransform: 'capitalize',
-//   },
-// })(Button);
 
 export default Dashboard
