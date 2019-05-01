@@ -25,13 +25,13 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
   },
   iconLarge: {
-    fontSize: 64,
+    fontSize: 36,
     padding: 10
   },
   buttonText: {
     fontFamily: "Source, sans-serif",
     color: "white",
-    fontSize: 48,
+    fontSize: 36,
     fontWeight: "light"
   },
 });
@@ -80,6 +80,7 @@ LabelButton.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.any,
   // iconPath: PropTypes.string,
+  size: PropTypes.any,
   linksTo: PropTypes.string,
   classes: PropTypes.object.isRequired
 };

@@ -17,8 +17,18 @@ const styles = ({
     backgroundColor: '#FEF9FE',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 35,
+    padding: 20,
   },
+  title: {
+    fontFamily: "Gotham, sans-serif",
+    fontSize: 32,
+    color: "#222"
+  },
+  subtitle: {
+    fontFamily: "Gotham, sans-serif",
+    fontSize: 18,
+    color: "#222"
+  }
 });
 
 class Dashboard extends React.Component {
@@ -28,21 +38,22 @@ class Dashboard extends React.Component {
         <Logo
           logoSize={ 300 }
         />
-        <h1>About this App:</h1>
-        <p>• This service is intended to serve as an educational tool to predict drug response for cancer treatments from patient mutation data.</p>
-        <p>• Always consult a licensed physician before making decisions and use results from this project with discretion.</p>
+        <br/>
+        <h1 style={ styles.title }>About this App:</h1>
+        <p style={ styles.subtitle }>• This service is intended to serve as an educational tool to predict drug response for cancer treatments from patient mutation data.</p>
+        <p style={ styles.subtitle }>• Always consult a licensed physician before making decisions and use results from this project with discretion.</p>
         <LabelButton
           text="Test"
           buttonStyle={{ backgroundColor: "#568BFF" }}
           linksTo="/login"
-          icon={Healing}
+          icon={ Healing }
             />
         <p style={ { textAlign: 'center' } }> or </p>
         <LabelButton
           text="History"
           buttonStyle={ { backgroundColor: "#B877E9" } }
           linksTo="/login"
-          icon={Web}
+          icon={ Web }
             />
       </div>
     );
