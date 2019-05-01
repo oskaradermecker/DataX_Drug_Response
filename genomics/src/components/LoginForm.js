@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
           <LabelButton
             text="Login"
             buttonStyle={{ backgroundColor: "#568BFF" }}
-            linksTo="/login"
+            linksTo="/dashboard"
             icon={Person}
               />
         </form>
