@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
             buttonStyle={{ backgroundColor: "#568BFF" }}
             linksTo="/dashboard"
             icon={Person}
-              />
+          />
         </form>
         <div className='form_other'>
           <a href='#'>Sign Up</a>
