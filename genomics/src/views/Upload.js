@@ -40,14 +40,18 @@ class Upload extends React.Component {
     super(props);
 
     this.state = {
-      finishedUploading: false
+      finishedUploading: false,
+      dataFile: ""
     };
   }
 
   render() {
     if (this.state.finishedUploading) {
-      console.log("finished uploading");
-      return <Redirect to='/results' />
+      console.log("finished countdown");
+      return (<Redirect to='/results' />);
+    }
+    if (this.state.dataFile != "") {
+      console.log("file " + this.state.dataFile + " successfuly uploaded!");
     }
     return (
       <div style={ styles.root }>
@@ -57,8 +61,10 @@ class Upload extends React.Component {
         <br/>
         <h1 style={ styles.title }>Get Started:</h1>
         <p style={ styles.subtitle }>• Upload a .csv containing your mutation data.</p>
-        < FileUpload />
-        < CountdownTimer
+        <FileUpload
+          uploadFileURL={(dataFile) => this.setState({dataFile})}
+        />
+        <CountdownTimer
           seconds={15}
           finishedUploading={this.state.finishedUploading}
           toResults={(finishedUploading) => this.setState({finishedUploading})}

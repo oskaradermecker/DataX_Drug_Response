@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import LabelButton from '../components/LabelButton';
+import ResponseBar from '../components/ResponseBar';
 import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { Send, Refresh, Book } from '@material-ui/icons';
@@ -41,6 +42,7 @@ class Results extends React.Component {
         <br/>
         <h1 style={ styles.title }>Your Results:</h1>
         <p style={ styles.subtitle }>• Learn more about your predicted responses and discuss treatment options with your physician.</p>
+        <ResponseBar text="Refametinib" color="lightgreen" color2="#5AEBD1" value="84" maxValue="100" rotation="160" />
         <LabelButton
           text="Share"
           buttonStyle={{ backgroundColor: "#568BFF" }}
