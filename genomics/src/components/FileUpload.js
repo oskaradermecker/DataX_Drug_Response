@@ -1,5 +1,6 @@
 import React from 'react';
-
+import LabelButton from '../components/LabelButton'
+import { Memory } from '@material-ui/icons';
 
 // from tutorial at https://medium.com/@ashishpandey_1612/file-upload-with-react-flask-e115e6f2bf99
 class FileUpload extends React.Component {
@@ -36,14 +37,7 @@ class FileUpload extends React.Component {
         <div>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
         </div>
-        <div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-        </div>
         <br />
-        <div>
-          <button>Upload</button>
-        </div>
-        <img src={this.state.imageURL} alt="img" />
       </form>
     );
   }

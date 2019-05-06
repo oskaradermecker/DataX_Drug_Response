@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
         <LabelButton
           text="Test"
           buttonStyle={{ backgroundColor: "#568BFF" }}
-          linksTo="/login"
+          linksTo="/upload"
           icon={ Healing }
             />
         <p style={ { textAlign: 'center' } }> or </p>
