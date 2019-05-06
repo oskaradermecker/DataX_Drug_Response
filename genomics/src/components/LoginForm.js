@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { Person } from '@material-ui/icons';
 import LabelButton from '../components/LabelButton';
 import { withStyles } from '@material-ui/core/styles';
-import './styles.scss';
+import './login_styles.scss';
 
 /* App.jsx */
 class LoginForm extends React.Component {

@@ -39,7 +39,7 @@ def fileUpload():
     destination="/".join([target, filename])
     file.save(destination)
     session['uploadFilePath']=destination
-    response="Whatever you wish too return"
+    response="Whatever you wish to return"
     return response
 
 if __name__ == "__main__":

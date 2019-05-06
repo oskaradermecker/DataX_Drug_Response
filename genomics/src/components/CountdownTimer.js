@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './styles.sass';
+import './countdown_styles.sass';
 import LabelButton from '../components/LabelButton';
 import { Cloud, Memory } from '@material-ui/icons';
 
@@ -48,6 +48,10 @@ class CountdownTimer extends React.Component {
   handleStart() {
     this.timer = setInterval(() => {
       const newCount = this.state.count - 1;
+      if (newCount <= 0) {
+        console.log("timer finished");
+        this.props.toResults(true);
+      }
       this.setState(
         {count: newCount >= 0 ? newCount : 0}
       );
@@ -150,7 +154,9 @@ SvgCircle.defaultProps = {
 }
 
 CountdownTimer.propTypes = {
-  seconds: PropTypes.number
+  seconds: PropTypes.number,
+  finishedUploading: PropTypes.bool,
+  toResults: PropTypes.func
 }
 
 export default CountdownTimer;

@@ -17,7 +17,7 @@ class FileUpload extends React.Component {
     super(props);
 
     this.state = {
-      imageURL: '',
+      imageURL: ''
     };
 
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -34,8 +34,9 @@ class FileUpload extends React.Component {
       method: 'POST',
       body: data,
     }).then((response) => {
+
       response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:8000/${body.file}` });
+        this.setState({ imageURL: `http://localhost:8000/${body.file}`});
       });
     });
   }

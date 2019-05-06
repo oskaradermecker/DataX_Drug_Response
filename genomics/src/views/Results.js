@@ -2,12 +2,9 @@ import React from "react";
 import { Button } from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import LabelButton from '../components/LabelButton';
-import FileUpload from '../components/FileUpload';
-import CountdownTimer from '../components/CountdownTimer';
 import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import { Attachment } from '@material-ui/icons';
-import { Redirect } from 'react-router-dom';
+import { Send, Refresh, Book } from '@material-ui/icons';
 
 const styles = ({
   body: {
@@ -34,38 +31,35 @@ const styles = ({
   }
 });
 
-class Upload extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      finishedUploading: false
-    };
-  }
-
+class Results extends React.Component {
   render() {
-    if (this.state.finishedUploading) {
-      console.log("finished uploading");
-      return <Redirect to='/results' />
-    }
     return (
       <div style={ styles.root }>
         <Logo
           logoSize={ 300 }
         />
         <br/>
-        <h1 style={ styles.title }>Get Started:</h1>
-        <p style={ styles.subtitle }>• Upload a .csv containing your mutation data.</p>
-        < FileUpload />
-        < CountdownTimer
-          seconds={15}
-          finishedUploading={this.state.finishedUploading}
-          toResults={(finishedUploading) => this.setState({finishedUploading})}
-        />
+        <h1 style={ styles.title }>Your Results:</h1>
+        <p style={ styles.subtitle }>• Learn more about your predicted responses and discuss treatment options with your physician.</p>
+        <LabelButton
+          text="Share"
+          buttonStyle={{ backgroundColor: "#568BFF" }}
+          linksTo="/upload"
+          icon={ Send }
+            />
       </div>
     );
   }
 }
 
-export default Upload
+//util func for reading in Icons from .svg files
+function buttonIcon(props) {
+  const path = '../images/svg/' + props.iconName + '.svg'
+  return (
+    <SvgIcon { ...props }>
+      <path d={ path } />
+    </SvgIcon>
+  );
+}
+
+export default Results

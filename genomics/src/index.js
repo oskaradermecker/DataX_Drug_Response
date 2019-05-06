@@ -3,9 +3,10 @@ import {Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Dashboard from './views/Dashboard'
-import Login from './views/Login'
-import Upload from './views/Upload'
+import Dashboard from './views/Dashboard';
+import Login from './views/Login';
+import Upload from './views/Upload';
+import Results from './views/Results';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -16,6 +17,7 @@ const routing = (
       <Route path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/upload" component={Upload} />
+      <Route path="/results" component={Results} />
     </div>
   </Router>
 )

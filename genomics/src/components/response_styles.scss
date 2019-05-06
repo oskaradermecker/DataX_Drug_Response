@@ -1,0 +1,28 @@
+.progress-bar-wrapper {
+  margin: 10px 0;
+
+  .progress-bar {
+    min-height: 40px;
+    width: 100%;
+
+    .progress-bar-progress {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      min-width: 0;
+      width: 100%;
+      transition: all 1s ease;
+    }
+
+    .percentage {
+      font-weight: bold;
+      padding-right: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      &::after {
+        content: "%";
+      }
+    }
+  }
+}
