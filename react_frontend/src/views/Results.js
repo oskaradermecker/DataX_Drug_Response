@@ -2,9 +2,10 @@ import React from "react";
 import { Button } from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import LabelButton from '../components/LabelButton';
+import ResponseBar from '../components/ResponseBar';
 import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import { Create, Inbox, Healing, Web} from '@material-ui/icons';
+import { Send, Refresh, Book } from '@material-ui/icons';
 
 const styles = ({
   body: {
@@ -31,7 +32,12 @@ const styles = ({
   }
 });
 
-class Dashboard extends React.Component {
+class Results extends React.Component {
+  // var data = require(window.location.pathname);
+
+
+// #niks code
+
   render() {
     return (
       <div style={ styles.root }>
@@ -39,21 +45,14 @@ class Dashboard extends React.Component {
           logoSize={ 300 }
         />
         <br/>
-        <h1 style={ styles.title }>About this App:</h1>
-        <p style={ styles.subtitle }>• This service is intended to serve as an educational tool to predict drug response for cancer treatments from patient mutation data.</p>
-        <p style={ styles.subtitle }>• Always consult a licensed physician before making decisions and use results from this project with discretion.</p>
+        <h1 style={ styles.title }>Your Results:</h1>
+        <p style={ styles.subtitle }>• Learn more about your predicted responses and discuss treatment options with your physician.</p>
+        <ResponseBar text="Refametinib" color="lightgreen" color2="#5AEBD1" value="84" maxValue="100" rotation="160" />
         <LabelButton
-          text="Test"
+          text="Share"
           buttonStyle={{ backgroundColor: "#568BFF" }}
-          linksTo="http://0.0.0.0:5000/"
-          icon={ Healing }
-            />
-        <p style={ { textAlign: 'center' } }> or </p>
-        <LabelButton
-          text="History"
-          buttonStyle={ { backgroundColor: "#B877E9" } }
-          linksTo="/login"
-          icon={ Web }
+          linksTo="/upload"
+          icon={ Send }
             />
       </div>
     );
@@ -70,4 +69,4 @@ function buttonIcon(props) {
   );
 }
 
-export default Dashboard
+export default Results

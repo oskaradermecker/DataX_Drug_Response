@@ -16,7 +16,7 @@ const styles = ({
     backgroundColor: '#FEF9FE',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 35,
+    padding: 20,
   },
   title: {
     fontFamily: "Source Sans, sans-serif",

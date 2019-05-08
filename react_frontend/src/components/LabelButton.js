@@ -25,7 +25,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
   },
   iconLarge: {
-    fontSize: 36,
+    fontSize: 64,
     padding: 10
   },
   buttonText: {
@@ -48,6 +48,7 @@ function createIcon(props) {
 
 class LabelButton extends React.Component {
   buttonClick = () => {
+    console.log("clicked");
     if (this.props.onClick) this.props.onClick();
     if (this.props.linksTo) this.props.history.push(this.props.linksTo);
   };
@@ -58,6 +59,9 @@ class LabelButton extends React.Component {
     return (
       <div style={{display: 'flex', justifyContent: 'center'}}>
         <Button
+        onClick={() => {
+          setTimeout(this.buttonClick, 200);
+        }}
           variant="contained"
           color="secondary"
           className={classes.button}
@@ -82,7 +86,8 @@ LabelButton.propTypes = {
   // iconPath: PropTypes.string,
   size: PropTypes.any,
   linksTo: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default withStyles(styles)(LabelButton);
