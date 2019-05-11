@@ -6,10 +6,7 @@ import ResponseBar from '../components/ResponseBar';
 import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { Send, Refresh, Book } from '@material-ui/icons';
-
-
-// using json created by upload component
-import PatientResponse from '../backend/flask_backend/patient_predictions.json';
+import axios from 'axios';
 
 const styles = ({
   body: {
@@ -37,7 +34,39 @@ const styles = ({
 });
 
 class Results extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dataFile: "patient_predictions.json",
+      numDrugs: 0
+    };
+  }
+
+  componentDidMount() {
+    const resultsURL = this.props.location.state.results;
+    console.log('URL to results passed from Upload:', resultsURL);
+
+    var data = require("../backend/flask_backend/patient_predictions.json"); // forward slashes will depend on the file location
+    this.state.numDrugs = data.length;
+    for(var i = 0; i < data.length; i++) {
+        var obj = data[i];
+        console.log('OBJJJJ',obj);
+      }
+  }
+
   render() {
+    var drugs = [];
+    var certainties = [];
+    var data = require("../backend/flask_backend/patient_predictions.json"); // forward slashes will depend on the file location
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+          console.log(key + " -> " + data[key]);
+          drugs.push(data[key]['Drug']);
+          certainties.push(data[key]['Certainty']);
+          console.log(data[key]['Drug'] + ' has response ' + data[key]['Certainty']);
+      }
+    }
     return (
       <div style={ styles.root }>
         <Logo
@@ -46,11 +75,12 @@ class Results extends React.Component {
         <br/>
         <h1 style={ styles.title }>Your Results:</h1>
         <p style={ styles.subtitle }>• Learn more about your predicted responses and discuss treatment options with your physician.</p>
-        <ResponseBar text="Refametinib" color="lightgreen" color2="#5AEBD1" value="76" maxValue="100" rotation="160" />
-        <ResponseBar text="CI-1040" color="lightgreen" color2="#5AEBD1" value="71" maxValue="100" rotation="160" />
-        <ResponseBar text="Pelitinib" color="lightgreen" color2="#5AEBD1" value="62" maxValue="100" rotation="160" />
-        <ResponseBar text="Afatinib" color="lightgreen" color2="#5AEBD1" value="59" maxValue="100" rotation="160" />
 
+        <ul>
+          {drugs.map(function(name, index){
+              return <ResponseBar text={name} color="lightgreen" color2="#5AEBD1" value={certainties[index] * 100} maxValue="100" rotation="160" />
+            })}
+        </ul>
         <LabelButton
           text="Share"
           buttonStyle={{ backgroundColor: "#568BFF" }}

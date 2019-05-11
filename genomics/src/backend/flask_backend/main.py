@@ -43,10 +43,8 @@ def upload_file():
         input_path = os.path.join(app.config['UPLOAD_FOLDER'], input_filename)
         file.save(input_path)
         results_filename = run_prediction(input_path)
-        # url_output = filename + '.json'
-        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], results_filename))
-        # redirect_url = redirect("http://localhost:8000/results/" + url_output)
-        return results_filename
+        # results_filename contains actual name, returning "patient_predictions" for testing
+        return "patient_predictions"
 
 from flask import send_from_directory
 
@@ -90,8 +88,8 @@ def run_prediction(filename):
     #read in file
     patient_data = pd.read_csv(filename)
     predictions = predict(patient_data)
-    output_name = filename.split('.csv')[0] + '_predictions.json'
-    # output_name = 'patient_predictions.json'
+    # output_name = filename.split('.csv')[0] + '_predictions.json'
+    output_name = 'patient_predictions.json'
     print('------ RESULTS ------')
     print('outputting to ' + output_name)
     output_string = predictions.to_json(orient='index')

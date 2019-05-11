@@ -48,8 +48,8 @@ class Upload extends React.Component {
 
   render() {
     if (this.state.finishedUploading) {
-      console.log("finished countdown");
-      return (<Redirect to='/results' />);
+      console.log("data file URL:", this.state.resultsFile['data']);
+      this.props.history.push('/results', { results: this.state.resultsFile['data'] });
     }
     if (this.state.dataFile != "") {
       console.log("file " + this.state.dataFile + " successfuly uploaded!");

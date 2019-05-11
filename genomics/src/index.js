@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import {Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -11,17 +11,19 @@ import Results from './views/Results';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
+  <div>
   <Router>
-    <div>
+    <Switch>
       <Route exact path="/" component={App} />
       <Route path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/upload" component={Upload} />
       <Route path="/results" component={Results} />
       <Route path="/results/:filename" component={Results} />
-
-    </div>
+      </Switch>
   </Router>
+  </div>
+
 )
 
 ReactDOM.render(routing, document.getElementById('root'));
