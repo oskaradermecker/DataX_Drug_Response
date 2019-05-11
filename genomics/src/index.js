@@ -18,6 +18,8 @@ const routing = (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/upload" component={Upload} />
       <Route path="/results" component={Results} />
+      <Route path="/results/:filename" component={Results} />
+
     </div>
   </Router>
 )

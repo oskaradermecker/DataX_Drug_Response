@@ -3,6 +3,8 @@ import LabelButton from '../components/LabelButton'
 import { Memory, FolderOpen } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
+
 
 const styles = ({
   fileButton: {
@@ -12,29 +14,54 @@ const styles = ({
 });
 
 // from tutorial at https://medium.com/@ashishpandey_1612/file-upload-with-react-flask-e115e6f2bf99
-class FileUpload extends React.Component {
+class FileUploader extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       fileURL: "",
-      selectedFile: null
     };
 
     this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleUpload = event => {
+    event.preventDefault();
+
     const uploadedFile = event.target.files[0];
-    console.log(uploadedFile);
-    this.setState({
-      selectedFile: uploadedFile,
-      loaded: 0,
-    });
+
     const data = new FormData()
-    data.append('file', this.state.selectedFile)
-    this.props.uploadFileURL(data);
+    data.append('file', uploadedFile)
+    data.append('filename', 'patient_data.csv')
+    this.props.uploadFileURL(uploadedFile);
+
+    axios.post('http://localhost:8000/upload', data, {
+      headers: {
+      'Content-Type': 'multipart/form-data'
+      }
+      })
+      .then((response) => {
+        this.props.returnResultsURL(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     // continue implementation from https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
+    // fetch('http://localhost:8000/upload', {
+    //   method: 'POST',
+    //   body: data,
+    // }).then((response) => {
+    //
+    //   console.log(response);
+    //   this.setState({fileURL: `http://localhost:8000/${response.body}`});
+    //   this.props.returnResultsURL(response.body);
+    //
+    //   // response.json().then((body) => {
+    //   //   this.setState({ fileURL: `http://localhost:3000/${body.file}` });
+    //   //   console.log("successful response fuck yeah");
+    //   // });
+    // });
   }
 
   render() {
@@ -52,4 +79,4 @@ class FileUpload extends React.Component {
   }
 }
 
-export default FileUpload;
+export default FileUploader;

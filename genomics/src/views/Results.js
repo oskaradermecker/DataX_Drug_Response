@@ -7,6 +7,10 @@ import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { Send, Refresh, Book } from '@material-ui/icons';
 
+
+// using json created by upload component
+import PatientResponse from '../backend/flask_backend/patient_predictions.json';
+
 const styles = ({
   body: {
     fontFamily: "Source Sans, sans-serif",
@@ -42,7 +46,11 @@ class Results extends React.Component {
         <br/>
         <h1 style={ styles.title }>Your Results:</h1>
         <p style={ styles.subtitle }>• Learn more about your predicted responses and discuss treatment options with your physician.</p>
-        <ResponseBar text="Refametinib" color="lightgreen" color2="#5AEBD1" value="84" maxValue="100" rotation="160" />
+        <ResponseBar text="Refametinib" color="lightgreen" color2="#5AEBD1" value="76" maxValue="100" rotation="160" />
+        <ResponseBar text="CI-1040" color="lightgreen" color2="#5AEBD1" value="71" maxValue="100" rotation="160" />
+        <ResponseBar text="Pelitinib" color="lightgreen" color2="#5AEBD1" value="62" maxValue="100" rotation="160" />
+        <ResponseBar text="Afatinib" color="lightgreen" color2="#5AEBD1" value="59" maxValue="100" rotation="160" />
+
         <LabelButton
           text="Share"
           buttonStyle={{ backgroundColor: "#568BFF" }}
@@ -53,6 +61,8 @@ class Results extends React.Component {
     );
   }
 }
+
+//util func for getting patient response data from json file
 
 //util func for reading in Icons from .svg files
 function buttonIcon(props) {

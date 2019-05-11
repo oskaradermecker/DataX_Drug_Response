@@ -8,8 +8,40 @@ import LabelButton from '../components/LabelButton';
 import { withStyles } from '@material-ui/core/styles';
 import './response_styles.scss';
 
-// https://codepen.io/federspielen/pen/vedgme
+const styles = ({
+  progressBarWrapper: {
+    margin: "10px 0",
 
+    progressBar: {
+      minHeight: "40px",
+      width: "100%",
+
+      progressBarProgress: {
+        minHeight: "40px",
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: "flex-end",
+        boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.2)",
+        minWidth: 0,
+        width: "100%",
+        transition: "all 1s ease"
+      },
+
+      responsePercentage: {
+        fontFamily: "Gotham Book sans-serif",
+      }
+  }
+},
+  drugName: {
+    fontSize: 24,
+    fontFamily: "Gotham Book sans-serif",
+    color: "#B877E9",
+  },
+
+});
+
+
+// https://codepen.io/federspielen/pen/vedgme
 class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
@@ -57,8 +89,8 @@ class ProgressBar extends React.Component {
             className="progress-bar-progress"
             style={this.progressBarStyle()}
           >
-            <div className="response-percentage">
-              {Math.round(this.targetPercentage * 100)}
+            <div className="response-progress">
+              {(Math.round(this.targetPercentage * 100)) + "% "}
             </div>
           </div>
         </div>

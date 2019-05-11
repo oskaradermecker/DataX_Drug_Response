@@ -18,7 +18,8 @@
 
     .response-percentage {
       padding-right: 10px;
-      font-family: "Gotham Book sans-serif";
+      margin: 10px 10px;
+      font-family: "Gotham Book, sans-serif";
       &::after {
         content: "%";
       }
@@ -27,5 +28,6 @@
 }
 .drug-name {
   font-size: 24;
-  font-family: "Gotham Book sans-serif";
+  font-family: "Gotham Book, sans-serif";
+  color: "#B877E9";
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import LabelButton from '../components/LabelButton';
-import FileUpload from '../components/FileUpload';
+import FileUploader from '../components/FileUploader';
 import CountdownTimer from '../components/CountdownTimer';
 import Logo from '../components/Logo';
 import SvgIcon from '@material-ui/core/SvgIcon';
@@ -41,7 +41,8 @@ class Upload extends React.Component {
 
     this.state = {
       finishedUploading: false,
-      dataFile: ""
+      dataFile: "",
+      resultsFile:""
     };
   }
 
@@ -53,6 +54,9 @@ class Upload extends React.Component {
     if (this.state.dataFile != "") {
       console.log("file " + this.state.dataFile + " successfuly uploaded!");
     }
+    if (this.state.resultsFile != "") {
+      console.log("model results returned by axios at URL:", this.state.resultsFile);
+    }
     return (
       <div style={ styles.root }>
         <Logo
@@ -61,11 +65,13 @@ class Upload extends React.Component {
         <br/>
         <h1 style={ styles.title }>Get Started:</h1>
         <p style={ styles.subtitle }>• Upload a .csv containing your mutation data.</p>
-        <FileUpload
+        <FileUploader
           uploadFileURL={(dataFile) => this.setState({dataFile})}
+          returnResultsURL={(resultsFile) => this.setState({resultsFile})}
         />
+        <br/>
         <CountdownTimer
-          seconds={15}
+          seconds={5}
           finishedUploading={this.state.finishedUploading}
           toResults={(finishedUploading) => this.setState({finishedUploading})}
         />
