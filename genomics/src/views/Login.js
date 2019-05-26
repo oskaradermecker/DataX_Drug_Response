@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button } from '@material-ui/core/Button';
 import Logo from '../components/Logo';
 import LoginForm from '../components/LoginForm';
+import firebase from "../data/firebase";
 
 const styles = ({
   body: {
