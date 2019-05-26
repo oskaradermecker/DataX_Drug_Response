@@ -13,7 +13,7 @@ logger = logging.getLogger('HELLO WORLD')
 
 
 # UPLOAD_FOLDER = './uploaded_files'
-UPLOAD_FOLDER = '/Users/nyerasi/Desktop/DataX_Drug_Response/genomics/src/backend/flask_backend'
+UPLOAD_FOLDER = '..backend/flask_backend'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)

@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import Dashboard from './views/Dashboard';
 import Login from './views/Login';
+import Signup from './views/Signup';
 import Upload from './views/Upload';
 import Results from './views/Results';
 
@@ -16,6 +17,7 @@ const routing = (
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/upload" component={Upload} />
       <Route path="/results" component={Results} />

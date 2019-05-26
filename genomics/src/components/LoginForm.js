@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
           />
         </form>
         <div className='form_other'>
-          <a href='#'>Sign Up</a>
+          <a href='/signup'>Sign Up</a>
           <a href='#'>Skip</a>
         </div>
       </div>

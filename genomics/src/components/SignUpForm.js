@@ -1,54 +1,59 @@
-import React, { Component } from 'react';
+/* Sidebar.jsx */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { TouchApp } from '@material-ui/icons';
+import LabelButton from '../components/LabelButton';
+import { withStyles } from '@material-ui/core/styles';
+import './login_styles.scss';
 
-// tried to import from https://codepen.io/jarredwitt/pen/epEbZK?editors=0110
-// import './styles.scss';
+/* App.jsx */
+class SignupForm extends React.Component {
+  render() {
+    return (
+      <div className='form'>
+        <form className='form_items'>
+          <div className='form_inputs'>
+            <input
+              type='text'
+              required
+              />
+            <label>username</label>
+          </div>
+          <div className='form_inputs'>
+            <input
+              type='email'
+              required
+              />
+            <label>email</label>
+          </div>
+          <div className='form_inputs'>
+            <input
+              type='password'
+              required
+              />
+            <label>password</label>
+          </div>
+          <div className='form_inputs'>
+            <input
+              type='institution'
+              required
+              />
+            <label>institution</label>
+          </div>
+          <LabelButton
+            text="Register"
+            buttonStyle={{ backgroundColor: "#568BFF" }}
+            linksTo="/dashboard"
+            icon={TouchApp}
+          />
+        </form>
+      </div>
+    );
+  }
 
-export default class SignUpContainer extends Component {
-	render() {
-		return (
-			<div id='signUpContainer'>
-				<SignUpHeader title="SomethingCo" />
-				<SignUpForm />
-			</div>
-		);
-	}
 }
 
-const SignUpHeader = props => (
-	<div id='signUpHeader'>
-		<div id='signUpHeaderTitle'>
-			{props.title}
-		</div>
-	</div>
-);
-
-const FormInput = props => (
-	<div className='signUpRow'>
-		<input type={props.type} placeholder={props.placeholder} />
-	</div>
-);
-
-const FormCheckBox = props => (
-	<div className='signUpRow'>
-		<input id={props.id} type='checkbox' />
-		<label htmlFor={props.id}>{props.label}</label>
-	</div>
-);
-
-const FormButton = props => (
-	<div className='signUpRow'>
-		<button type='button'>{props.title}</button>
-	</div>
-);
-
-const SignUpForm = props => (
-	<div id='signUpFormContainer'>
-		<form id="signUpForm">
-			<FormInput type="text" placeholder="email" />
-				<FormInput type="password" placeholder="password" />
-				<FormInput type="password" placeholder="confirm" />
-				<FormCheckBox id="terms" label="I agree to the terms and conditions" />
-				<FormButton title="Sign Up" />
-		</form>
-	</div>
-);
+export default SignupForm;
